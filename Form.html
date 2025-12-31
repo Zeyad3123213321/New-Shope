@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Registration Form</title>
+    <link rel="icon" type="image/png" href="image/logo.png">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+      <style>
+        /* ======= Modern Reset ======= */
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+    --accent: #06b6d4;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --success: #10b981;
+    --error: #ef4444;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --glass: rgba(255, 255, 255, 0.08);
+    --border-radius: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* ======= Floating Particles Background ======= */
+.particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float 20s infinite linear;
+}
+
+/* ======= Modern Container ======= */
+.user-registration {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--border-radius);
+    width: 100%;
+    max-width: 480px;
+    padding: 3rem;
+    position: relative;
+    border: 1px solid var(--glass);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.user-registration::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+/* ======= Header ======= */
+.header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+.logo i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.user-registration h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--dark), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--gray);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* ======= Modern Form Groups ======= */
+.form-group {
+    margin-bottom: 1.75rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+    padding-left: 4px;
+    transition: var(--transition);
+}
+
+.input-container {
+    position: relative;
+    border-radius: 12px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    transition: var(--transition);
+}
+
+.input-container:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    transform: translateY(-1px);
+}
+
+.input-container i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.input-container:focus-within i {
+    color: var(--primary);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    font-size: 15px;
+    border: none;
+    background: transparent;
+    color: var(--dark);
+    border-radius: 12px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-group input::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+/* ======= Floating Label Effect ======= */
+.form-group.focused label {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* ======= Error Messages ======= */
+.error {
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 6px;
+    padding-left: 4px;
+    display: none;
+    font-weight: 500;
+    animation: slideDown 0.3s ease;
+}
+
+.form-group.error .input-container {
+    border-color: var(--error);
+    animation: shake 0.4s ease;
+}
+
+.form-group.error i {
+    color: var(--error);
+}
+
+/* ======= Modern Submit Button ======= */
+.form-submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0.5rem;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+.form-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+}
+
+.form-submit-btn:active {
+    transform: translateY(0);
+}
+
+.form-submit-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: var(--transition);
+}
+
+.form-submit-btn:hover::after {
+    left: 100%;
+}
+
+.form-submit-btn.loading {
+    background: linear-gradient(135deg, var(--primary-dark), #7c3aed);
+    cursor: wait;
+}
+
+/* ======= Modern Spinner ======= */
+.spinner {
+    width: 22px;
+    height: 22px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: none;
+}
+
+/* ======= Success Message ======= */
+.success-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+    color: white;
+    display: none;
+    animation: fadeIn 0.6s ease;
+    z-index: 10;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    animation: scaleIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.success-message h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.success-message p {
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* ======= Decorative Elements ======= */
+.decorative-shape {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.shape-1 {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary), transparent);
+    border-radius: 30px;
+    top: -40px;
+    right: -40px;
+    opacity: 0.1;
+    transform: rotate(45deg);
+}
+
+.shape-2 {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent), transparent);
+    border-radius: 50%;
+    bottom: -20px;
+    left: -20px;
+    opacity: 0.08;
+}
+
+/* ======= Progress Steps (Optional) ======= */
+.progress-steps {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 2rem;
+}
+
+.step {
+    width: 10px;
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.step.active {
+    background: var(--primary);
+    transform: scale(1.3);
+}
+
+/* ======= Animations ======= */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-20px) rotate(120deg);
+    }
+    66% {
+        transform: translateY(20px) rotate(240deg);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* ======= Responsive Design ======= */
+@media (max-width: 640px) {
+    .user-registration {
+        padding: 2rem;
+        margin: 10px;
+    }
+    
+    .user-registration h1 {
+        font-size: 1.5rem;
+    }
+    
+    .form-group input {
+        padding: 14px 14px 14px 44px;
+    }
+    
+    .form-submit-btn {
+        padding: 16px;
+    }
+    
+    .decorative-shape {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-registration {
+        padding: 1.5rem;
+    }
+    
+    .logo {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+}
+
+/* ======= Dark Mode Support ======= */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --card-bg: rgba(30, 41, 59, 0.95);
+        --dark: #f1f5f9;
+        --light: #0f172a;
+        --glass: rgba(255, 255, 255, 0.05);
+    }
+    
+    body, html {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+    
+    .input-container {
+        background: rgba(0, 76, 255, 0.5);
+        border-color: #0f58be;
+    }
+    
+    .form-group input {
+        color: #f1f5f9;
+    }
+    
+    .form-group input::placeholder {
+        color: #64748b;
+    }
+}
+
+/* ======= Password Field Styles ======= */
+.password-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    padding: 4px;
+    transition: var(--transition);
+}
+
+.password-toggle:hover {
+    color: var(--primary);
+}
+
+/* ======= Validation Icons ======= */
+.validation-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.form-group.valid .validation-icon {
+    opacity: 1;
+    color: var(--success);
+}
+
+.form-group.error .validation-icon {
+    opacity: 1;
+    color: var(--error);
+}
+    /* Interactive floating shapes */
+.floating-elements {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    z-index: -1;
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 107, 0, 0.5);
+    opacity: 0.7;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+/* Hover effects */
+.floating-element:hover {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* SQUARES (6 original + 2 new) */
+.floating-element.square:nth-child(1) { 
+    width: 70px; height: 70px; top: 20%; left: 15%; 
+    animation: float 25s infinite linear; 
+}
+.floating-element.square:nth-child(2) { 
+    width: 50px; height: 50px; top: 65%; right: 20%; 
+    animation: float 30s infinite linear reverse; 
+}
+.floating-element.square:nth-child(3) { 
+    width: 90px; height: 90px; bottom: 25%; left: 20%; 
+    animation: float 35s infinite linear; 
+}
+.floating-element.square:nth-child(4) { 
+    width: 40px; height: 40px; top: 45%; left: 75%; 
+    animation: float 28s infinite linear reverse; 
+}
+.floating-element.square:nth-child(5) { 
+    width: 80px; height: 80px; top: 75%; left: 65%; 
+    animation: float 32s infinite linear; 
+}
+.floating-element.square:nth-child(6) { 
+    width: 60px; height: 60px; top: 35%; left: 45%; 
+    animation: float 40s infinite linear reverse; 
+}
+
+/* HEART shapes */
+.floating-element.heart:nth-child(7) { 
+    width: 60px; height: 60px; top: 10%; right: 10%;
+    background: rgba(255, 105, 180, 0.2);
+    border-color: rgba(255, 20, 147, 0.6);
+    clip-path: polygon(50% 15%, 70% 0, 85% 15%, 100% 35%, 100% 70%, 50% 100%, 0 70%, 0 35%, 15% 15%, 30% 0);
+    animation: float2 22s infinite linear;
+}
+.floating-element.heart:nth-child(8) { 
+    width: 45px; height: 45px; bottom: 15%; left: 10%;
+    background: rgba(255, 182, 193, 0.2);
+    border-color: rgba(219, 112, 147, 0.6);
+    clip-path: polygon(50% 15%, 70% 0, 85% 15%, 100% 35%, 100% 70%, 50% 100%, 0 70%, 0 35%, 15% 15%, 30% 0);
+    animation: float 26s infinite linear reverse;
+}
+
+/* CUP shapes */
+.floating-element.cup:nth-child(9) { 
+    width: 50px; height: 70px; top: 70%; right: 15%;
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(218, 165, 32, 0.6);
+    border-radius: 0 0 10px 10px;
+    position: relative;
+    animation: float2 34s infinite linear;
+}
+.floating-element.cup:nth-child(9):before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(218, 165, 32, 0.6);
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    right: -15px;
+    top: 20px;
+}
+
+/* CYLINDER shapes */
+.floating-element.cylinder:nth-child(10) { 
+    width: 55px; height: 80px; top: 20%; left: 70%;
+    background: linear-gradient(to bottom, 
+        rgba(70, 130, 180, 0.3) 0%, 
+        rgba(100, 149, 237, 0.4) 30%,
+        rgba(70, 130, 180, 0.3) 70%,
+        rgba(70, 130, 180, 0.5) 100%);
+    border-color: rgba(65, 105, 225, 0.6);
+    border-radius: 50% / 10%;
+    animation: float 38s infinite linear reverse;
+}
+
+/* STAR shapes */
+.floating-element.star:nth-child(11) { 
+    width: 55px; height: 55px; top: 50%; right: 30%;
+    background: rgba(255, 255, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: float2 29s infinite linear;
+}
+.floating-element.star:nth-child(12) { 
+    width: 40px; height: 40px; bottom: 30%; right: 50%;
+    background: rgba(255, 255, 224, 0.2);
+    border-color: rgba(255, 255, 0, 0.6);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: float 33s infinite linear reverse;
+}
+
+/* TRIANGLE shapes */
+.floating-element.triangle:nth-child(13) { 
+    width: 0; height: 0; top: 25%; left: 40%;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid rgba(50, 205, 50, 0.3);
+    background: transparent;
+    border: none;
+    animation: float2 31s infinite linear;
+}
+.floating-element.triangle:nth-child(14) { 
+    width: 0; height: 0; bottom: 20%; left: 80%;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 45px solid rgba(0, 255, 127, 0.3);
+    background: transparent;
+    border: none;
+    animation: float 27s infinite linear reverse;
+}
+
+/* CIRCLE shapes */
+.floating-element.circle:nth-child(15) { 
+    width: 65px; height: 65px; top: 15%; left: 85%;
+    border-radius: 50%;
+    background: rgba(138, 43, 226, 0.2);
+    border-color: rgba(147, 112, 219, 0.6);
+    animation: float 36s infinite linear;
+}
+.floating-element.circle:nth-child(16) { 
+    width: 40px; height: 40px; bottom: 40%; left: 5%;
+    border-radius: 50%;
+    background: rgba(186, 85, 211, 0.2);
+    border-color: rgba(153, 50, 204, 0.6);
+    animation: float2 24s infinite linear reverse;
+}
+
+/* DIAMOND shapes */
+.floating-element.diamond:nth-child(17) { 
+    width: 50px; height: 50px; top: 60%; right: 70%;
+    background: rgba(255, 69, 0, 0.2);
+    border-color: rgba(255, 140, 0, 0.6);
+    transform: rotate(45deg);
+    animation: float 32s infinite linear;
+}
+.floating-element.diamond:hover:nth-child(17) { 
+    transform: rotate(45deg) scale(1.2);
+}
+
+/* HEXAGON shapes */
+.floating-element.hexagon:nth-child(18) { 
+    width: 60px; height: 70px; top: 40%; right: 5%;
+    background: rgba(0, 191, 255, 0.2);
+    border-color: rgba(30, 144, 255, 0.6);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    animation: float2 35s infinite linear reverse;
+}
+
+/* CLOUD shapes */
+.floating-element.cloud:nth-child(19) { 
+    width: 80px; height: 45px; top: 80%; left: 30%;
+    background: rgba(240, 248, 255, 0.3);
+    border-color: rgba(176, 224, 230, 0.6);
+    border-radius: 50px;
+    animation: float 28s infinite linear;
+}
+.floating-element.cloud:nth-child(19):before,
+.floating-element.cloud:nth-child(19):after {
+    content: '';
+    position: absolute;
+    background: rgba(240, 248, 255, 0.3);
+    border-radius: 50%;
+}
+.floating-element.cloud:nth-child(19):before {
+    width: 40px; height: 40px;
+    top: -15px; left: 10px;
+}
+.floating-element.cloud:nth-child(19):after {
+    width: 35px; height: 35px;
+    top: -10px; right: 15px;
+}
+
+/* CRESCENT MOON shape */
+.floating-element.moon:nth-child(20) { 
+    width: 60px; height: 60px; top: 10%; left: 55%;
+    background: rgba(255, 255, 224, 0.2);
+    border-color: rgba(255, 250, 205, 0.6);
+    border-radius: 50%;
+    box-shadow: inset 15px -5px 0 rgba(255, 255, 255, 0.2);
+    animation: float2 30s infinite linear reverse;
+}
+
+/* Enhanced float animation */
+@keyframes float {
+    0% { 
+        transform: translateY(0) rotate(0deg) scale(1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg) scale(1.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    100% { 
+        transform: translateY(0) rotate(360deg) scale(1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Alternative float animation */
+@keyframes float2 {
+    0% { 
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    25% { 
+        transform: translate(10px, -15px) rotate(90deg) scale(1.08);
+    }
+    50% { 
+        transform: translate(0, -25px) rotate(180deg) scale(1.05);
+    }
+    75% { 
+        transform: translate(-10px, -15px) rotate(270deg) scale(1.08);
+    }
+    100% { 
+        transform: translate(0, 0) rotate(360deg) scale(1);
+    }
+}
+
+/* Pulse animation for some elements */
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.9; }
+}
+
+/* Add pulse animation to some shapes */
+.floating-element.heart:nth-child(7),
+.floating-element.star:nth-child(11),
+.floating-element.moon:nth-child(20) {
+    animation: float2 30s infinite linear, pulse 4s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .floating-element {
+        width: 30px !important;
+        height: 30px !important;
+        opacity: 0.5;
+    }
+    
+    .floating-element:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Adjust special shapes for mobile */
+    .floating-element.triangle:nth-child(13),
+    .floating-element.triangle:nth-child(14) {
+        border-width: 15px !important;
+        border-bottom-width: 30px !important;
+        border-top-width: 30px !important;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="floating-elements">
+    <!-- Squares -->
+    <div class="floating-element square"></div>
+    <div class="floating-element square"></div>
+    <div class="floating-element square"></div>
+    <div class="floating-element square"></div>
+    <div class="floating-element square"></div>
+    <div class="floating-element square"></div>
+    
+    <!-- Hearts -->
+    <div class="floating-element heart"></div>
+    <div class="floating-element heart"></div>
+    
+    <!-- Cup -->
+    <div class="floating-element cup"></div>
+    
+    <!-- Cylinder -->
+    <div class="floating-element cylinder"></div>
+    
+    <!-- Stars -->
+    <div class="floating-element star"></div>
+    <div class="floating-element star"></div>
+    
+    <!-- Triangles -->
+    <div class="floating-element triangle"></div>
+    <div class="floating-element triangle"></div>
+    
+    <!-- Circles -->
+    <div class="floating-element circle"></div>
+    <div class="floating-element circle"></div>
+    
+    <!-- Diamond -->
+    <div class="floating-element diamond"></div>
+    
+    <!-- Hexagon -->
+    <div class="floating-element hexagon"></div>
+    
+    <!-- Cloud -->
+    <div class="floating-element cloud"></div>
+    
+    <!-- Moon -->
+    <div class="floating-element moon"></div>
+</div>
+    <section class="user-registration" aria-label="User Registration Form">
+        <h1>Welcome To Our Website</h1>
+        <form id="userForm" novalidate>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter Your Name"
+                  autocomplete="name"
+                  required
+                  aria-describedby="nameError"
+                  aria-invalid="false"
+                />
+                <div class="error" id="nameError" role="alert">
+                  Please enter your full name
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter Your Email Address"
+                  autocomplete="email"
+                  required
+                  aria-describedby="emailError"
+                  aria-invalid="false"
+                />
+                <div class="error" id="emailError" role="alert">
+                  Please enter a valid email address
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (01XXXXXXXXX)</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Enter Your Phone Number"
+                  autocomplete="tel"
+                  required
+                  aria-describedby="phoneError"
+                  aria-invalid="false"
+                  pattern="01\d{9}"
+                />
+                <div class="error" id="phoneError" role="alert">
+                  Please enter a valid 11-digit phone number starting with 01
+                </div>
+            </div>
+
+            <button type="submit" class="form-submit-btn" id="submitBtn" aria-live="polite" aria-busy="false">
+                <div class="spinner" id="spinner" aria-hidden="true"></div>
+                <span id="submitText">Submit</span>
+            </button>
+        </form>
+
+        <div class="success-message" id="successMessage" role="alert" aria-live="polite">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            Thank you! Your information has been submitted successfully.
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Reset error visibility and aria-invalid
+            ['name', 'email', 'phone'].forEach(id => {
+                document.getElementById(id + 'Error').style.display = 'none';
+                document.getElementById(id).setAttribute('aria-invalid', 'false');
+            });
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            let isValid = true;
+
+            if (name === '') {
+                document.getElementById('nameError').style.display = 'block';
+                document.getElementById('name').setAttribute('aria-invalid', 'true');
+                isValid = false;
+            }
+
+            if (!validateEmail(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                document.getElementById('email').setAttribute('aria-invalid', 'true');
+                isValid = false;
+            }
+
+            if (!validatePhone(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                document.getElementById('phone').setAttribute('aria-invalid', 'true');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            // Show loading spinner & disable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('spinner');
+            const submitText = document.getElementById('submitText');
+
+            submitBtn.classList.add('loading');
+            spinner.style.display = 'inline-block';
+            submitText.textContent = 'Submitting...';
+            submitBtn.setAttribute('aria-busy', 'true');
+            submitBtn.disabled = true;
+
+            // Prepare data to send
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('timestamp', new Date().toLocaleString());
+
+            // Google Apps Script URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxGCCwWqPs3qDlC4ILh4S-89p9GZCl45N348oP4CBuQ2bCUVki58QbR05x3pRGUqfrQjw/exec';
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Show success message & hide form
+                        document.getElementById('userForm').style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'block';
+
+                        // Redirect after 2 seconds
+                        setTimeout(() => {
+                            window.location.href = 'Zeyad Shope.html';
+                        }, 2000);
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was a problem submitting your form. Please try again.');
+
+                    // Reset button state
+                    submitBtn.classList.remove('loading');
+                    spinner.style.display = 'none';
+                    submitText.textContent = 'Submit';
+                    submitBtn.setAttribute('aria-busy', 'false');
+                    submitBtn.disabled = false;
+                });
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const cleaned = phone.replace(/\D/g, '');
+            return cleaned.length === 11 && cleaned.startsWith('01');
+        }
+    </script>
+</body>
+</html>
